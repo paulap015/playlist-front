@@ -1,0 +1,56 @@
+<div class="container mt-4">
+  <h3>Crear Playlist</h3>
+
+  <form [formGroup]="playlistForm" (ngSubmit)="crearPlaylist()">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control"
+             [ngClass]="{'is-invalid': playlistForm.get('nombre')?.invalid && playlistForm.get('nombre')?.touched}">
+      <div class="invalid-feedback" *ngIf="playlistForm.get('nombre')?.errors?.['required']">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea formControlName="descripcion" class="form-control"></textarea>
+    </div>
+
+    <div formArrayName="canciones">
+      <div *ngFor="let cancion of canciones.controls; let i = index" [formGroupName]="i" class="card mb-3 p-3">
+        <h5>Canción {{ i + 1 }}</h5>
+
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <label>Título</label>
+            <input type="text" formControlName="titulo" class="form-control">
+          </div>
+          <div class="col-md-6 mb-2">
+            <label>Artista</label>
+            <input type="text" formControlName="artista" class="form-control">
+          </div>
+          <div class="col-md-6 mb-2">
+            <label>Álbum</label>
+            <input type="text" formControlName="album" class="form-control">
+          </div>
+          <div class="col-md-3 mb-2">
+            <label>Año</label>
+            <input type="text" formControlName="anno" class="form-control">
+          </div>
+          <div class="col-md-3 mb-2">
+            <label>Género</label>
+            <input type="text" formControlName="genero" class="form-control">
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-danger btn-sm mt-2" (click)="eliminarCancion(i)" *ngIf="canciones.length > 1">
+          Eliminar Canción
+        </button>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-secondary mb-3" (click)="agregarCancion()">Agregar otra canción</button>
+    <br>
+    <button class="btn btn-success" [disabled]="playlistForm.invalid">Guardar Playlist</button>
+  </form>
+</div>

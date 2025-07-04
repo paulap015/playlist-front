@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <h2 class="mb-4">🎵 Listado de Playlists</h2>
+
+  <!-- Caja de búsqueda -->
+  <div class="input-group mb-4">
+    <input type="text" class="form-control" placeholder="Buscar por nombre..." [(ngModel)]="busqueda" (input)="filtrarPlaylists()" />
+    <button class="btn btn-secondary" (click)="resetFiltro()">Limpiar</button>
+  </div>
+
+  <div *ngIf="playlistsFiltradas.length === 0" class="alert alert-info">
+    No hay playlists registradas.
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let playlist of playlistsFiltradas">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ playlist.nombre }}</h5>
+          <p class="card-text">{{ playlist.descripcion }}</p>
+          <button class="btn btn-outline-primary btn-sm me-2" (click)="verDetalles(playlist.nombre)">
+            Ver detalles
+          </button>
+          <button class="btn btn-outline-danger btn-sm" (click)="eliminarPlaylist(playlist.nombre)">
+            Eliminar
+          </button>
+
+          <div *ngIf="playlistSeleccionada?.nombre === playlist.nombre" class="mt-3">
+            <h6 class="fw-bold">Canciones:</h6>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let cancion of playlistSeleccionada.canciones" class="list-group-item">
+                <strong>{{ cancion.titulo }}</strong> – {{ cancion.artista }} ({{ cancion.album }}, {{ cancion.anno }})<br>
+                <small class="text-muted">{{ cancion.genero }}</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

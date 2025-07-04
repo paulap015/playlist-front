@@ -1,0 +1,39 @@
+<div class="login-wrapper d-flex align-items-center justify-content-center min-vh-100 bg-light">
+  <div class="card shadow p-4" style="max-width: 450px; width: 100%;">
+    <div class="text-center mb-4">
+      <h3 class="fw-bold">🎵 Playlist App</h3>
+      <p class="text-muted">Inicia sesión para comenzar</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="mb-3">
+        <label for="username" class="form-label fw-semibold">Correo electrónico</label>
+        <input id="username" type="email" class="form-control" formControlName="username" placeholder="ejemplo@correo.com">
+        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="text-danger small">
+          Correo válido requerido
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Contraseña</label>
+        <div class="input-group">
+          <input id="password" [type]="hide_show ? 'text' : 'password'" class="form-control" formControlName="password" placeholder="********">
+          <button type="button" class="btn btn-outline-secondary" (click)="passwordHide()" tabindex="-1">
+            <i class="fa" [ngClass]="hide_show ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+        </div>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger small">
+          Contraseña requerida
+        </div>
+      </div>
+
+      <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Ingresar</button>
+      </div>
+    </form>
+
+    <div class="text-center text-muted small mt-3">
+      © 2025 Playlist App
+    </div>
+  </div>
+</div>
