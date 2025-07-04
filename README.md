@@ -1,59 +1,45 @@
-# PlaylistFront
+# 🎧 Playlist Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+Este proyecto es una aplicación web construida con **Angular 18** que permite al usuario gestionar playlists y sus canciones. Se conecta a una API backend desarrollada en Java Spring Boot.
 
-## Development server
+## Características principales
 
-To start a local development server, run:
+- Login simple (usuario: `admin`, contraseña: `admin123`)
+- Creación de playlists con múltiples canciones
+- Visualización y búsqueda de playlists
+- Eliminación de playlists
+- Navegación con rutas protegidas
+- UI responsive con Bootstrap 5
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tecnologías utilizadas
 
-## Code scaffolding
+- Angular 18 (Standalone Components)
+- TypeScript
+- Bootstrap 5
+- Reactive Forms
+- HttpClientModule
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## Instalación y ejecución
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Requisitos previos
 
-```bash
-ng generate --help
-```
+- Node.js (v18+)
+- Angular CLI (`npm install -g @angular/cli`)
 
-## Building
+### Pasos para ejecutar el proyecto
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. Clona el repositorio o descarga el código.
+2. En la raíz del proyecto, instala las dependencias:
 
 ```bash
-ng test
+npm install
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Funcionalidades Futuras
+- Autenticación completa con backend
+- Validación más robusta de formularios
+- Edición de playlists
+- Soporte para archivos multimedia
